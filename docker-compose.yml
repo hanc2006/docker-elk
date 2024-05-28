@@ -7,13 +7,7 @@ services:
   #
   # This task only needs to be performed once, *before* the first stack startup.
   #
-  # By default, it is excluded from the services started by 'docker compose up'
-  # due to the non-default profile it belongs to. To run it, either provide the
-  # '--profile=setup' CLI flag to Compose commands, or "up" the service by name
-  # such as 'docker compose up tls'.
   tls:
-    profiles:
-      - setup
     build:
       context: tls/
       args:
@@ -35,13 +29,7 @@ services:
   # the values defined inside the '.env' file, and the built-in roles to their
   # default permissions.
   #
-  # By default, it is excluded from the services started by 'docker compose up'
-  # due to the non-default profile it belongs to. To run it, either provide the
-  # '--profile=setup' CLI flag to Compose commands, or "up" the service by name
-  # such as 'docker compose up setup'.
   setup:
-    profiles:
-      - setup
     build:
       context: setup/
       args:
