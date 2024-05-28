@@ -4,6 +4,7 @@
 #
 server.name: kibana
 server.host: 0.0.0.0
+server.publicBaseUrl: https://kibana.elk-stack.orb.local
 elasticsearch.hosts: [ https://elasticsearch:9200 ]
 
 monitoring.ui.container.elasticsearch.enabled: true
@@ -36,13 +37,13 @@ server.ssl.key: config/kibana.key
 ## Generate with either
 ##  $ docker container run --rm docker.elastic.co/kibana/kibana:8.6.2 bin/kibana-encryption-keys generate
 ##  $ openssl rand -hex 32
-##
+## 
 ## https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html
 ## https://www.elastic.co/guide/en/kibana/current/kibana-encryption-keys.html
 #
-#xpack.security.encryptionKey:
-#xpack.encryptedSavedObjects.encryptionKey:
-#xpack.reporting.encryptionKey:
+xpack.security.encryptionKey: 8188b0b443d2c4308e26cd2d433437ba77719d4a0e51e90e43277689e36828d6
+xpack.encryptedSavedObjects.encryptionKey: 8188b0b443d2c4308e26cd2d433437ba77719d4a0e51e90e43277689e36828d6
+xpack.reporting.encryptionKey: 8188b0b443d2c4308e26cd2d433437ba77719d4a0e51e90e43277689e36828d6
 
 ## Fleet
 ## https://www.elastic.co/guide/en/kibana/current/fleet-settings-kb.html
@@ -55,7 +56,7 @@ xpack.fleet.outputs:
     type: elasticsearch
     hosts: [ https://elasticsearch:9200 ]
     # Set to output of 'docker-compose up tls'. Example:
-    #ca_trusted_fingerprint: 846637d1bb82209640d31b79869a370c8e47c2dc15c7eafd4f3d615e51e3d503
+    ca_trusted_fingerprint: 846637d1bb82209640d31b79869a370c8e47c2dc15c7eafd4f3d615e51e3d503
     is_default: true
     is_default_monitoring: true
 
